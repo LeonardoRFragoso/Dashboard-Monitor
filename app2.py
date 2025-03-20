@@ -67,12 +67,13 @@ logging.basicConfig(level=logging.DEBUG if DEBUG else logging.INFO)
 # Funções Auxiliares
 # =====================================================================
 
-def capturar_screenshot(url: str) -> bytes:
+def capturar_screenshot(url: str, marker: str = None) -> bytes:
     """
     Abre o URL em um navegador headless (Chrome) e retorna a imagem em bytes (PNG).
 
     Parâmetros:
         url (str): URL da página a ser capturada.
+        marker (str, opcional): Texto que deve estar presente na página para indicar que ela foi carregada.
     
     Retorna:
         bytes ou None: Imagem em formato PNG ou None em caso de erro.
@@ -88,8 +89,15 @@ def capturar_screenshot(url: str) -> bytes:
         driver = webdriver.Chrome(service=service_obj, options=chrome_options)
         
         driver.get(url)
-        # Espera explícita: aguarda que o documento esteja completamente carregado (até 20 segundos)
-        WebDriverWait(driver, 20).until(lambda d: d.execute_script('return document.readyState') == 'complete')
+        # Espera explícita: aguarda que o documento esteja completamente carregado (até 30 segundos)
+        WebDriverWait(driver, 30).until(
+            lambda d: d.execute_script('return document.readyState') == 'complete'
+        )
+        # Se um marker foi informado, aguarda até que ele esteja presente no conteúdo da página
+        if marker:
+            WebDriverWait(driver, 30).until(
+                lambda d: marker.lower() in d.page_source.lower()
+            )
         
         screenshot = driver.get_screenshot_as_png()
         driver.quit()
@@ -188,9 +196,9 @@ def monitorar_servicos() -> None:
             st.session_state.downtime[name] = None
             renderizar_status_card(name, url, status, status_code)
             
-            # Captura de tela, se habilitado
+            # Captura de tela, se habilitado, aguardando que o marcador apareça na página
             if CAPTURE_SCREENSHOT:
-                screenshot = capturar_screenshot(url)
+                screenshot = capturar_screenshot(url, marker)
                 if screenshot:
                     st.image(screenshot, caption=f"Visualização atual de {name}", use_container_width=True)
         else:

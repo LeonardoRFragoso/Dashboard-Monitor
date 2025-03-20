@@ -27,14 +27,17 @@ import logging
 DEBUG = False
 CHECK_MARKER = False       # Se True, verifica se o 'marker' aparece no HTML (em lower-case)
 CAPTURE_SCREENSHOT = True  # Se False, não fará a captura de tela
+
+# Caminho do arquivo de credenciais original e do extra
 CREDENTIALS_FILE = "/home/dev/Documentos/Dashboard-Monitor/gdrive_credentials.json"
+EXTRA_CREDENTIALS_FILE = r"C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\service_account.json"
 
 # Configuração da página do Streamlit com ícone de satélite
 st.set_page_config(page_title="Monitor de Aplicações", page_icon="🛰️", layout="wide")
 st.markdown("<h1 style='text-align: center;'>Monitor de Aplicações 🛰️</h1>", unsafe_allow_html=True)
 st.markdown("---")
 
-# Dicionário de serviços a serem monitorados
+# Dicionário de serviços a serem monitorados (Dashboards)
 services = {
     "Painel Comercial": {
         "url": "http://192.168.0.45:8501/", 
@@ -50,10 +53,17 @@ services = {
     },
 }
 
-# Dicionário com IDs dos arquivos (planilhas) no Google Drive
+# Dicionário com IDs dos arquivos (planilhas) no Google Drive para a rotina original
 spreadsheet_files = {
     "Planilha 1 - data.xlsx": "1fMeKSdRvZod7FkvWLKXwsZV32W6iSmbI",
     "Planilha 2 - janelas_multirio_corrigido.xlsx": "1gzqhOADx-VJstLHvM7VVm3iuGUuz3Vgu"
+}
+
+# Dicionário com as planilhas para a rotina extra (atualizadas a partir da execução às 6h)
+extra_spreadsheets = {
+    "Exportação.xlsx": "1wijOMirmPmhCl72xzd5HjKUfAOgX0eJd",
+    "Importação.xlsx": "1Iy-kkW7uvcFEKJ3i_UBbCnFyUqa0su2G",
+    "Cabotagem.xlsx": "1kvjmYigg06aEOrgFG4gRFwzCIjTrns2P"
 }
 
 # Estado para armazenar o horário de "queda" dos serviços
@@ -93,7 +103,7 @@ def capturar_screenshot(url: str, marker: str = None) -> bytes:
         WebDriverWait(driver, 30).until(
             lambda d: d.execute_script('return document.readyState') == 'complete'
         )
-        # Se um marker foi informado, aguarda até que ele esteja presente no conteúdo da página
+        # Se um marker foi informado, aguarda até que ele esteja presente na página
         if marker:
             WebDriverWait(driver, 30).until(
                 lambda d: marker.lower() in d.page_source.lower()
@@ -196,13 +206,12 @@ def monitorar_servicos() -> None:
             st.session_state.downtime[name] = None
             renderizar_status_card(name, url, status, status_code)
             
-            # Captura de tela, se habilitado, aguardando que o marcador apareça na página
+            # Captura de tela, aguardando que o marcador esteja presente
             if CAPTURE_SCREENSHOT:
                 screenshot = capturar_screenshot(url, marker)
                 if screenshot:
                     st.image(screenshot, caption=f"Visualização atual de {name}", use_container_width=True)
         else:
-            # Registra o tempo de downtime se ainda não estiver registrado
             if st.session_state.downtime[name] is None:
                 st.session_state.downtime[name] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             renderizar_status_card(name, url, status, status_code, downtime=st.session_state.downtime[name])
@@ -210,12 +219,11 @@ def monitorar_servicos() -> None:
 
 def verificar_rotina_processamento() -> None:
     """
-    Verifica o status da rotina de processamento baseada na atualização dos arquivos do Google Drive.
-    Exibe o status na interface do Streamlit.
+    Verifica o status da rotina de processamento baseada na atualização dos arquivos do Google Drive
+    (rotina original) e exibe o status na interface do Streamlit.
     """
     st.header("Status da Rotina de Processamento")
     try:
-        # Autentica usando a conta de serviço
         creds = service_account.Credentials.from_service_account_file(
             CREDENTIALS_FILE,
             scopes=['https://www.googleapis.com/auth/drive.metadata.readonly']
@@ -225,20 +233,18 @@ def verificar_rotina_processamento() -> None:
         operational = True
         messages = []
 
-        # Verifica o tempo de modificação de cada planilha
         for name, file_id in spreadsheet_files.items():
             file_metadata = drive_service.files().get(fileId=file_id, fields="modifiedTime").execute()
             modified_time_str = file_metadata.get("modifiedTime")
             modified_time = dateutil.parser.isoparse(modified_time_str)
             time_diff = (datetime.now(timezone.utc) - modified_time).total_seconds()
 
-            if time_diff <= 300:  # 5 minutos = 300 segundos
+            if time_diff <= 300:
                 messages.append(f"{name} foi atualizado há menos de 5 minutos.")
             else:
                 messages.append(f"{name} não foi atualizado nos últimos 5 minutos.")
                 operational = False
 
-        # Renderiza o cartão de status da rotina de processamento
         if operational:
             card_html = f"""
             <div style='padding:10px; border: 1px solid #d4edda; border-radius: 5px; background-color: #d4edda;'>
@@ -264,14 +270,69 @@ def verificar_rotina_processamento() -> None:
         st.markdown(error_html, unsafe_allow_html=True)
         logging.exception("Erro ao verificar rotina de processamento")
 
+def verificar_rotina_processamento_extra() -> None:
+    """
+    Verifica se a execução que começou às 6h de cada dia atualizou corretamente as planilhas
+    (Exportação.xlsx, Importação.xlsx e Cabotagem.xlsx) utilizando as credenciais extra.
+    Para cada planilha, o horário de modificação deve ser igual ou posterior a 6h do dia corrente.
+    """
+    st.header("Status da Rotina de Processamento - Extra")
+    try:
+        extra_creds = service_account.Credentials.from_service_account_file(
+            EXTRA_CREDENTIALS_FILE,
+            scopes=['https://www.googleapis.com/auth/drive.metadata.readonly']
+        )
+        extra_drive_service = build('drive', 'v3', credentials=extra_creds)
+
+        operational = True
+        messages = []
+
+        for name, file_id in extra_spreadsheets.items():
+            file_metadata = extra_drive_service.files().get(fileId=file_id, fields="modifiedTime").execute()
+            modified_time_str = file_metadata.get("modifiedTime")
+            modified_time = dateutil.parser.isoparse(modified_time_str)
+            # Calcula as 6h do dia corrente na mesma timezone do modified_time
+            today_6am = datetime.now(modified_time.tzinfo).replace(hour=6, minute=0, second=0, microsecond=0)
+            
+            if modified_time >= today_6am:
+                messages.append(f"{name} foi atualizado após as 6h.")
+            else:
+                messages.append(f"{name} NÃO foi atualizado após as 6h.")
+                operational = False
+
+        if operational:
+            card_html = f"""
+            <div style='padding:10px; border: 1px solid #d4edda; border-radius: 5px; background-color: #d4edda;'>
+                <h3 style='color: green;'>Rotina de Processamento Extra Operante ✅</h3>
+                {''.join([f"<p>{msg}</p>" for msg in messages])}
+            </div>
+            """
+        else:
+            card_html = f"""
+            <div style='padding:10px; border: 1px solid #f5c6cb; border-radius: 5px; background-color: #f8d7da;'>
+                <h3 style='color: red;'>Rotina de Processamento Extra NÃO Operante ❌</h3>
+                {''.join([f"<p>{msg}</p>" for msg in messages])}
+            </div>
+            """
+        st.markdown(card_html, unsafe_allow_html=True)
+    except Exception as e:
+        error_html = f"""
+        <div style='padding:10px; border: 1px solid #f5c6cb; border-radius: 5px; background-color: #f8d7da;'>
+            <h3 style='color: red;'>Erro ao verificar a Rotina de Processamento Extra ❌</h3>
+            <p>{str(e)}</p>
+        </div>
+        """
+        st.markdown(error_html, unsafe_allow_html=True)
+        logging.exception("Erro ao verificar rotina de processamento extra")
+
 def main():
     """
-    Função principal que orquestra o monitoramento dos serviços e a verificação da rotina de processamento.
+    Função principal que orquestra o monitoramento dos serviços e a verificação das rotinas de processamento.
     """
-    # Atualiza a página automaticamente a cada 2 minutos (120000 milissegundos)
     st_autorefresh(interval=120000, limit=100, key="monitor")
     monitorar_servicos()
     verificar_rotina_processamento()
+    verificar_rotina_processamento_extra()
 
 if __name__ == "__main__":
     main()

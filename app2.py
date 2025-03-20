@@ -30,11 +30,11 @@ CAPTURE_SCREENSHOT = True  # Se False, não fará a captura de tela
 
 # Caminho do arquivo de credenciais original e do extra
 CREDENTIALS_FILE = "/home/dev/Documentos/Dashboard-Monitor/gdrive_credentials.json"
-EXTRA_CREDENTIALS_FILE = r"C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\service_account.json"
+EXTRA_CREDENTIALS_FILE = "/home/dev/Documentos/Dashboard-Monitor/service_account.json"
 
 # Configuração da página do Streamlit com ícone de satélite
-st.set_page_config(page_title="Monitor de Aplicações", page_icon="🛰️", layout="wide")
-st.markdown("<h1 style='text-align: center;'>Monitor de Aplicações 🛰️</h1>", unsafe_allow_html=True)
+st.set_page_config(page_title="Torre de Controle - Monitor de Aplicações", page_icon="🛰️", layout="wide")
+st.markdown("<h1 style='text-align: center;'>Torre de Controle - Monitor de Aplicações 🛰️</h1>", unsafe_allow_html=True)
 st.markdown("---")
 
 # Dicionário de serviços a serem monitorados (Dashboards)
@@ -64,6 +64,13 @@ extra_spreadsheets = {
     "Exportação.xlsx": "1wijOMirmPmhCl72xzd5HjKUfAOgX0eJd",
     "Importação.xlsx": "1Iy-kkW7uvcFEKJ3i_UBbCnFyUqa0su2G",
     "Cabotagem.xlsx": "1kvjmYigg06aEOrgFG4gRFwzCIjTrns2P"
+}
+
+# Dicionário com as planilhas para a nova rotina dos DETRAN (semanais - dados com menos de 7 dias)
+weekly_spreadsheets = {
+    "Detran-RJ": "1vrpJmvfOviNeE1yTMv4ikdcOPceGidYg",
+    "Detran-SP": "18ZacAr6WI7pfXrQ8AIVFfiJUuNl0UPwY",
+    "Detran-ES": "1xPTVAHv80Pe0lD-8yPWgRm9yblN7s39I"
 }
 
 # Estado para armazenar o horário de "queda" dos serviços
@@ -194,7 +201,7 @@ def monitorar_servicos() -> None:
     """
     Monitora os serviços definidos no dicionário 'services' e exibe o status na interface do Streamlit.
     """
-    st.header("Status dos Dashboards")
+    st.header("Status dos Dashboards - Itracker")
     for name, details in services.items():
         url = details["url"]
         marker = details["marker"]
@@ -202,11 +209,8 @@ def monitorar_servicos() -> None:
         status, status_code = verificar_status_servico(url, marker)
         
         if status:
-            # Reseta o downtime se o serviço estiver disponível
             st.session_state.downtime[name] = None
             renderizar_status_card(name, url, status, status_code)
-            
-            # Captura de tela, aguardando que o marcador esteja presente
             if CAPTURE_SCREENSHOT:
                 screenshot = capturar_screenshot(url, marker)
                 if screenshot:
@@ -222,7 +226,7 @@ def verificar_rotina_processamento() -> None:
     Verifica o status da rotina de processamento baseada na atualização dos arquivos do Google Drive
     (rotina original) e exibe o status na interface do Streamlit.
     """
-    st.header("Status da Rotina de Processamento")
+    st.header("Janelas - 5 Minutos")
     try:
         creds = service_account.Credentials.from_service_account_file(
             CREDENTIALS_FILE,
@@ -248,7 +252,7 @@ def verificar_rotina_processamento() -> None:
         if operational:
             card_html = f"""
             <div style='padding:10px; border: 1px solid #d4edda; border-radius: 5px; background-color: #d4edda;'>
-                <h3 style='color: green;'>Rotina de Processamento Operante ✅</h3>
+                <h3 style='color: green;'>Extração de Janelas Operante ✅</h3>
                 {''.join([f"<p>{msg}</p>" for msg in messages])}
             </div>
             """
@@ -276,7 +280,7 @@ def verificar_rotina_processamento_extra() -> None:
     (Exportação.xlsx, Importação.xlsx e Cabotagem.xlsx) utilizando as credenciais extra.
     Para cada planilha, o horário de modificação deve ser igual ou posterior a 6h do dia corrente.
     """
-    st.header("Status da Rotina de Processamento - Extra")
+    st.header("LogComex - Diário")
     try:
         extra_creds = service_account.Credentials.from_service_account_file(
             EXTRA_CREDENTIALS_FILE,
@@ -291,7 +295,6 @@ def verificar_rotina_processamento_extra() -> None:
             file_metadata = extra_drive_service.files().get(fileId=file_id, fields="modifiedTime").execute()
             modified_time_str = file_metadata.get("modifiedTime")
             modified_time = dateutil.parser.isoparse(modified_time_str)
-            # Calcula as 6h do dia corrente na mesma timezone do modified_time
             today_6am = datetime.now(modified_time.tzinfo).replace(hour=6, minute=0, second=0, microsecond=0)
             
             if modified_time >= today_6am:
@@ -303,7 +306,7 @@ def verificar_rotina_processamento_extra() -> None:
         if operational:
             card_html = f"""
             <div style='padding:10px; border: 1px solid #d4edda; border-radius: 5px; background-color: #d4edda;'>
-                <h3 style='color: green;'>Rotina de Processamento Extra Operante ✅</h3>
+                <h3 style='color: green;'>Extração LogComex - 6h Operante ✅</h3>
                 {''.join([f"<p>{msg}</p>" for msg in messages])}
             </div>
             """
@@ -325,14 +328,76 @@ def verificar_rotina_processamento_extra() -> None:
         st.markdown(error_html, unsafe_allow_html=True)
         logging.exception("Erro ao verificar rotina de processamento extra")
 
+def verificar_rotina_processamento_weekly() -> None:
+    """
+    Verifica se as planilhas dos DETRAN (Detran-RJ, Detran-SP e Detran-ES)
+    foram extraídas nos últimos 7 dias, utilizando as credenciais extra.
+    Cada planilha deve ter dados com menos de 7 dias da data atual.
+    """
+    st.header("Detran Semanal")
+    try:
+        extra_creds = service_account.Credentials.from_service_account_file(
+            EXTRA_CREDENTIALS_FILE,
+            scopes=['https://www.googleapis.com/auth/drive.metadata.readonly']
+        )
+        extra_drive_service = build('drive', 'v3', credentials=extra_creds)
+
+        operational = True
+        messages = []
+        seven_days_seconds = 7 * 24 * 3600
+
+        for name, file_id in weekly_spreadsheets.items():
+            file_metadata = extra_drive_service.files().get(fileId=file_id, fields="modifiedTime").execute()
+            modified_time_str = file_metadata.get("modifiedTime")
+            modified_time = dateutil.parser.isoparse(modified_time_str)
+            time_diff = (datetime.now(timezone.utc) - modified_time).total_seconds()
+
+            if time_diff <= seven_days_seconds:
+                messages.append(f"{name} foi atualizado nos últimos 7 dias.")
+            else:
+                messages.append(f"{name} NÃO foi atualizado nos últimos 7 dias.")
+                operational = False
+
+        if operational:
+            card_html = f"""
+            <div style='padding:10px; border: 1px solid #d4edda; border-radius: 5px; background-color: #d4edda;'>
+                <h3 style='color: green;'>Detran - Dados Recentes Operante ✅</h3>
+                {''.join([f"<p>{msg}</p>" for msg in messages])}
+            </div>
+            """
+        else:
+            card_html = f"""
+            <div style='padding:10px; border: 1px solid #f5c6cb; border-radius: 5px; background-color: #f8d7da;'>
+                <h3 style='color: red;'>Detran - Rotina Semanal NÃO Operante ❌</h3>
+                {''.join([f"<p>{msg}</p>" for msg in messages])}
+            </div>
+            """
+        st.markdown(card_html, unsafe_allow_html=True)
+    except Exception as e:
+        error_html = f"""
+        <div style='padding:10px; border: 1px solid #f5c6cb; border-radius: 5px; background-color: #f8d7da;'>
+            <h3 style='color: red;'>Erro ao verificar a Rotina de Processamento Semanal ❌</h3>
+            <p>{str(e)}</p>
+        </div>
+        """
+        st.markdown(error_html, unsafe_allow_html=True)
+        logging.exception("Erro ao verificar rotina de processamento semanal")
+
 def main():
     """
     Função principal que orquestra o monitoramento dos serviços e a verificação das rotinas de processamento.
     """
     st_autorefresh(interval=120000, limit=100, key="monitor")
     monitorar_servicos()
-    verificar_rotina_processamento()
-    verificar_rotina_processamento_extra()
+    
+    st.markdown("### Status das Rotinas de Processamento")
+    cols = st.columns(3)
+    with cols[0]:
+        verificar_rotina_processamento()
+    with cols[1]:
+        verificar_rotina_processamento_extra()
+    with cols[2]:
+        verificar_rotina_processamento_weekly()
 
 if __name__ == "__main__":
     main()

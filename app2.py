@@ -29,9 +29,9 @@ CHECK_MARKER = False       # Se True, verifica se o 'marker' aparece no HTML (em
 CAPTURE_SCREENSHOT = True  # Se False, não fará a captura de tela
 CREDENTIALS_FILE = "/home/dev/Documentos/Dashboard-Monitor/gdrive_credentials.json"
 
-# Configuração da página do Streamlit
-st.set_page_config(page_title="Monitor de Aplicações", page_icon="", layout="wide")
-st.markdown("<h1 style='text-align: center;'>Monitor de Aplicações </h1>", unsafe_allow_html=True)
+# Configuração da página do Streamlit com ícone de satélite
+st.set_page_config(page_title="Monitor de Aplicações", page_icon="🛰️", layout="wide")
+st.markdown("<h1 style='text-align: center;'>Monitor de Aplicações 🛰️</h1>", unsafe_allow_html=True)
 st.markdown("---")
 
 # Dicionário de serviços a serem monitorados
@@ -88,8 +88,8 @@ def capturar_screenshot(url: str) -> bytes:
         driver = webdriver.Chrome(service=service_obj, options=chrome_options)
         
         driver.get(url)
-        # Espera explícita: aguarda que o elemento <body> esteja presente (até 10 segundos)
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+        # Espera explícita: aguarda que o documento esteja completamente carregado (até 20 segundos)
+        WebDriverWait(driver, 20).until(lambda d: d.execute_script('return document.readyState') == 'complete')
         
         screenshot = driver.get_screenshot_as_png()
         driver.quit()

@@ -209,3 +209,93 @@ Traceback (most recent call last):
     return self._sock.recv_into(b)
            ^^^^^^^^^^^^^^^^^^^^^^^
 urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'Foi forçado o cancelamento de uma conexão existente pelo host remoto', None, 10054, None))
+2025-04-16 10:52:14,567 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:52:16,511 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:52:16,565 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:52:16,604 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:52:30,695 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:52:32,459 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:52:32,499 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:52:32,532 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:52:43,552 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:52:45,187 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:52:45,221 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:52:45,252 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:52:56,451 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:52:57,465 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:52:58,479 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:54:15,937 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:54:17,601 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:54:17,635 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:54:17,668 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:54:30,551 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:54:32,241 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:54:32,277 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:54:32,322 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:54:43,146 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:54:44,794 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:54:44,846 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:54:44,913 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:54:55,694 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:54:56,662 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:54:58,078 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:56:15,945 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:56:17,645 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:56:17,686 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:56:17,710 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:56:31,429 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:56:33,106 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:56:33,128 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:56:33,179 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:56:44,094 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:56:45,753 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:56:45,799 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:56:45,831 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:56:56,632 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:56:57,779 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:56:58,822 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 11:00:05,935 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 11:00:07,761 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:00:07,916 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:00:07,986 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 11:00:21,001 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 11:00:22,647 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:00:22,804 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:00:22,852 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 11:00:33,829 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 11:00:35,389 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:00:35,424 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:00:35,459 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 11:00:46,351 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 11:00:47,272 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 11:00:48,293 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 11:02:05,929 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 11:02:07,605 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:02:07,620 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:02:07,652 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 11:02:25,530 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 11:02:27,009 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:02:27,036 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:02:27,071 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 11:02:37,848 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 11:02:39,338 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:02:39,373 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:02:39,405 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 11:02:50,459 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 11:02:51,399 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 11:02:52,372 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 11:03:11,823 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 11:03:14,134 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:03:14,174 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:03:14,208 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 11:03:29,606 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 11:03:31,469 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:03:31,504 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:03:31,533 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 11:03:42,408 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 11:03:44,278 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:03:44,304 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 11:03:44,333 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 11:03:55,599 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 11:03:56,555 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 11:03:57,701 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0

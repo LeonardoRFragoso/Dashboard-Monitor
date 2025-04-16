@@ -162,11 +162,59 @@ st.markdown("""
 
 # Cabeçalho com logo e título
 st.markdown("""
-<div class="header-container">
-    <img src="https://cdn-icons-png.flaticon.com/512/3986/3986653.png" class="header-logo">
-    <h1>Torre de Controle - Monitor de Aplicações</h1>
-</div>
+    <style>
+        .titulo-dashboard-container {
+            position: relative;
+            padding: 35px 30px;
+            border-radius: 15px;
+            background: linear-gradient(to right, #F37021, #ffffff);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .titulo-dashboard {
+            font-size: 38px;
+            font-weight: 800;
+            color: #212529;
+            margin: 0;
+        }
+
+        .subtitulo-dashboard {
+            position: absolute;
+            bottom: 15px;
+            right: 30px;
+            font-size: 13px;
+            font-style: italic;
+            font-weight: 400;
+            color: #8A8A8A;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .titulo-dashboard {
+                font-size: 28px;
+            }
+
+            .subtitulo-dashboard {
+                position: static;
+                margin-top: 10px;
+                text-align: center;
+                display: block;
+            }
+
+            .titulo-dashboard-container {
+                padding-bottom: 50px;
+            }
+        }
+    </style>
+
+    <div class="titulo-dashboard-container">
+        <h1 class="titulo-dashboard">Torre de Controle - Monitor de Aplicações</h1>
+        <p class="subtitulo-dashboard">Monitoramento em tempo real dos serviços e rotinas</p>
+    </div>
+    <hr style="border-top: 3px solid #F37021; margin: 20px 0;">
 """, unsafe_allow_html=True)
+
 
 # Dicionário de serviços a serem monitorados (Dashboards)
 services = {

@@ -1,0 +1,211 @@
+2025-04-16 10:43:44,610 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:43:44,646 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:43:47,503 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:43:47,516 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:43:47,669 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:43:47,671 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:43:47,711 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:43:47,711 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:44:03,319 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:44:05,532 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:44:05,566 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:44:05,594 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:44:17,193 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:44:19,683 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:44:19,717 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:44:19,757 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:44:32,058 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:44:34,284 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:44:34,366 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:44:34,432 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:44:48,223 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:44:49,905 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:44:49,933 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:44:49,963 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:45:01,058 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:45:03,098 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:45:03,129 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:45:03,157 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:45:14,463 - root - ERROR - Erro ao verificar rotina de processamento
+Traceback (most recent call last):
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\app.py", line 816, in verificar_rotina_processamento
+    creds = service_account.Credentials.from_service_account_file(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\google\oauth2\service_account.py", line 258, in from_service_account_file
+    info, signer = _service_account_info.from_filename(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\google\auth\_service_account_info.py", line 78, in from_filename
+    with io.open(filename, "r", encoding="utf-8") as json_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/dev/Documentos/Dashboard-Monitor/gdrive_credentials.json'
+2025-04-16 10:45:14,469 - root - ERROR - Erro ao verificar rotina de processamento extra
+Traceback (most recent call last):
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\app.py", line 853, in verificar_rotina_processamento_extra
+    extra_creds = service_account.Credentials.from_service_account_file(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\google\oauth2\service_account.py", line 258, in from_service_account_file
+    info, signer = _service_account_info.from_filename(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\google\auth\_service_account_info.py", line 78, in from_filename
+    with io.open(filename, "r", encoding="utf-8") as json_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/dev/Documentos/Dashboard-Monitor/service_account.json'
+2025-04-16 10:45:14,471 - root - ERROR - Erro ao verificar rotina de processamento semanal
+Traceback (most recent call last):
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\app.py", line 890, in verificar_rotina_processamento_weekly
+    extra_creds = service_account.Credentials.from_service_account_file(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\google\oauth2\service_account.py", line 258, in from_service_account_file
+    info, signer = _service_account_info.from_filename(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\google\auth\_service_account_info.py", line 78, in from_filename
+    with io.open(filename, "r", encoding="utf-8") as json_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/dev/Documentos/Dashboard-Monitor/service_account.json'
+2025-04-16 10:46:48,190 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:46:48,211 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:46:50,433 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:46:50,445 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:46:50,480 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:46:50,480 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:46:50,508 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:46:50,516 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:47:06,832 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:47:08,893 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:47:08,918 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:47:08,970 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:47:19,899 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:47:21,498 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:47:21,522 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:47:21,548 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:47:32,342 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:47:33,378 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:47:34,370 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:47:44,338 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:47:46,194 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:47:46,238 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:47:46,267 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:47:55,717 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:47:57,472 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:47:57,509 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:47:57,545 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:48:11,119 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:48:12,785 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:48:12,827 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:48:12,871 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:48:23,816 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:48:25,676 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:48:25,708 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:48:25,747 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:48:36,772 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:48:37,779 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:48:38,803 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:50:11,219 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:50:13,181 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:50:13,216 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:50:13,253 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:50:26,405 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:50:28,421 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:50:28,461 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:50:28,495 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:50:39,631 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:50:41,665 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:50:41,698 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:50:41,738 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:50:52,935 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:50:53,885 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:50:54,951 - googleapiclient.discovery_cache - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-16 10:51:14,993 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:51:16,632 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:51:16,671 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:51:16,701 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:51:17,006 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:51:19,164 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:51:19,214 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:51:19,261 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:51:32,392 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:51:34,046 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:51:34,087 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:51:34,129 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:51:44,996 - WDM - INFO - ====== WebDriver manager ======
+2025-04-16 10:51:47,035 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:51:47,062 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-16 10:51:47,099 - WDM - INFO - Driver [C:\Users\leonardo.fragoso\.wdm\drivers\chromedriver\win64\135.0.7049.95\chromedriver-win32/chromedriver.exe] found in cache
+2025-04-16 10:51:49,020 - root - ERROR - Erro ao capturar screenshot
+Traceback (most recent call last):
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\urllib3\connection.py", line 516, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1374, in getresponse
+    response.begin()
+  File "C:\Users\leonardo.fragoso\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 318, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\app.py", line 274, in capturar_screenshot
+    driver.get(url)
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 356, in get
+    self.execute(Command.GET, {"url": url})
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 302, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 322, in _request
+    response = self._conn.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\urllib3\_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\urllib3\_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\urllib3\poolmanager.py", line 443, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\Desktop\Projetos\Dash-ControleAplicações\venv\Lib\site-packages\urllib3\connection.py", line 516, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1374, in getresponse
+    response.begin()
+  File "C:\Users\leonardo.fragoso\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 318, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\leonardo.fragoso\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'Foi forçado o cancelamento de uma conexão existente pelo host remoto', None, 10054, None))
